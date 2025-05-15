@@ -3,7 +3,7 @@ import { Github, Twitter, Instagram } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-white py-12 border-t border-gray-200">
+    <footer className="bg-black py-12">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         
-        <div className="mt-12 pt-8 border-t border-gray-200 text-center text-gray-500 text-sm">
+        <div className="mt-12 pt-8  text-center text-gray-500 text-sm">
           <p>&copy; {new Date().getFullYear()} WHISPR. All rights reserved.</p>
         </div>
       </div>
