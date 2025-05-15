@@ -1,11 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { setSocket } from './socket';
 
 const Hero: React.FC = () => {
-  const bubblesRef = useRef<HTMLDivElement>(null);
 
+
+    const navigate = useNavigate()
  const [currentOption, setCurrentOption] = useState(0);
-const [fade, setFade] = useState(true);
+ const [fade, setFade] = useState(true);
 
 const options = ["World", "People", "Your ex may be"];
 
@@ -22,44 +24,48 @@ useEffect(() => {
   return () => clearInterval(interval);
 }, []);
 
-  
-  useEffect(() => {
-    const createBubble = () => {
-      if (!bubblesRef.current) return;
-      
-      const bubble = document.createElement('div');
-      const size = Math.random() * 60 + 20;
-      const left = Math.random() * 100;
-      const animDuration = Math.random() * 15 + 10;
-      
-      bubble.classList.add('bubble');
-      bubble.style.width = `${size}px`;
-      bubble.style.height = `${size}px`;
-      bubble.style.left = `${left}%`;
-      bubble.style.animationDuration = `${animDuration}s`;
-      bubble.style.opacity = `${Math.random() * 0.3 + 0.1}`;
-      
-      bubblesRef.current.appendChild(bubble);
-      
-      setTimeout(() => {
-        if (bubble && bubblesRef.current?.contains(bubble)) {
-          bubblesRef.current.removeChild(bubble);
-        }
-      }, animDuration * 1000);
+   const [connecting, setConnecting] = useState(false);
+
+  const handleStartChatting = () => {
+    setConnecting(true);
+
+    const socket = new WebSocket("ws://localhost:3000");
+
+    socket.onopen = () => {
+      console.log("Connected to server...");
     };
-    
-    const interval = setInterval(createBubble, 800);
-    return () => clearInterval(interval);
-  }, []);
-  
+
+    socket.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+         setSocket(socket);
+      if (data.type === "waiting") {
+        console.log("Waiting for partner...");
+      }
+
+      if (data.type === "match") {
+        const { roomId } = data;
+        navigate('/chatpage', { state: { roomId } }); // Pass roomId and socket
+      }
+
+      if (data.type === "partner-disconnected") {
+        alert("Your partner has disconnected.");
+      }
+    };
+
+    socket.onerror = (err) => {
+      console.error("WebSocket error:", err);
+    };
+  };
+
+
+
   return (
     <div className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[800px] rounded-full bg-white/30 blur-3xl z-0" />
 
       
-      {/* Animated Bubbles */}
-      <div ref={bubblesRef} className="absolute inset-0 z-10 overflow-hidden" />
+    
       
       <div className="container mx-auto px-4 md:px-6 relative z-20">
         <div className="max-w-3xl mx-auto text-center">
@@ -81,7 +87,13 @@ useEffect(() => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="w-full bg-white p-4 text-black font-medium rounded-[100px] sm:w-auto">Start Chatting Now</button>
+             <button
+      className="w-full bg-white p-4 text-black font-medium rounded-[100px] sm:w-auto"
+      onClick={handleStartChatting}
+      disabled={connecting}
+    >
+      {connecting ? "Connecting..." : "Start Chatting Now"}
+    </button>
             
           </div>
          

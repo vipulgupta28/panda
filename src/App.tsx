@@ -1,25 +1,15 @@
-
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import HowItWorks from './components/HowItWorks';
-import WhoAreWe from './components/WhoAreWe';
-import CallToAction from './components/CallToAction';
-import Footer from './components/Footer';
-
+import AppRoutes from "./Routes/AppRoutes";
+import { BrowserRouter } from "react-router-dom";
 
 
 function App() {
   return (
+    <BrowserRouter>
+
     <div className="min-h-screen text-white bg-black">
-      <Navbar />
-      <Hero />
-      <Features />
-      <HowItWorks />
-      <WhoAreWe />
-      <CallToAction />
-      <Footer />
+      <AppRoutes/>
     </div>
+    </BrowserRouter>
   );
 }
 
