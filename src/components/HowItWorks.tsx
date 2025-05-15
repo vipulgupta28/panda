@@ -4,20 +4,26 @@ interface StepProps {
   number: number;
   title: string;
   description: string;
+  isLast?: boolean;
 }
 
-const Step: React.FC<StepProps> = ({ number, title, description }) => {
+const Step: React.FC<StepProps> = ({ number, title, description, isLast }) => {
   return (
-    <div className="relative flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-8">
-      <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-black text-white text-xl font-bold">
+    <div className="relative flex flex-col md:flex-row items-start gap-4 md:gap-6">
+      {/* Step Circle */}
+      <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-white border border-gray-400 text-black text-lg font-bold shadow-md">
         {number}
       </div>
+
+      {/* Step Content */}
       <div>
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-gray-600">{description}</p>
+        <h3 className="text-xl font-semibold text-white mb-1">{title}</h3>
+        <p className="text-gray-300">{description}</p>
       </div>
-      {number < 3 && (
-        <div className="hidden md:block absolute top-24 left-6 h-20 w-0.5 bg-gray-300"></div>
+
+      {/* Connecting Line (Only for desktop & not the last step) */}
+      {!isLast && (
+        <div className="hidden md:block absolute left-6 top-14 h-20 w-0.5 bg-gray-600 opacity-30"></div>
       )}
     </div>
   );
@@ -25,32 +31,33 @@ const Step: React.FC<StepProps> = ({ number, title, description }) => {
 
 const HowItWorks: React.FC = () => {
   return (
-    <section id="how-it-works" className="py-20">
+    <section id="how-it-works" className="py-20 bg-black text-white">
       <div className="container mx-auto px-4 md:px-6">
+        {/* Heading */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Getting started with WHISPR is simple. Follow these steps to begin connecting with people worldwide.
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            WHISPR lets you start real conversations — instantly, anonymously, globally.
           </p>
         </div>
-        
-        <div className="max-w-3xl mx-auto space-y-12 md:space-y-16">
-          <Step 
+
+        {/* Steps */}
+        <div className="max-w-3xl mx-auto space-y-14 md:space-y-20 relative">
+          <Step
             number={1}
-            title="Create Your Profile"
-            description="Sign up with just a username. No email, phone number, or personal information required."
+            title="No Login — Just Start Chatting"
+            description="No need to sign up. Just hit the start button and you're in. No personal data required."
           />
-          
-          <Step 
+          <Step
             number={2}
-            title="Set Your Preferences"
-            description="Choose your interests or let our algorithm match you randomly with people from around the world."
+            title="Instant Pairing Across the World"
+            description="Click 'Start Chatting' and we'll connect you instantly with someone, anywhere on the globe."
           />
-          
-          <Step 
+          <Step
             number={3}
-            title="Start Chatting"
-            description="Connect instantly with someone new and start a conversation. If you want to switch, just click 'Next'."
+            title="Don’t Like the Chat? Just Skip"
+            description="Not vibing with your current match? Hit 'Next' and move on. It's that simple."
+            isLast
           />
         </div>
       </div>

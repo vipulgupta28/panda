@@ -24,8 +24,8 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex gap-20 justify-center items-center">
           <div className="flex items-center">
-            <span className={`text-xl font-bold ${isScrolled ? 'text-black' : 'text-white'}`}>
-  WHISPR
+            <span className={`text-3xl font-medium ${isScrolled ? 'text-black' : 'text-white'}`}>
+ Panda
 </span>
 
           </div>

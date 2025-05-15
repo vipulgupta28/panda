@@ -21,10 +21,10 @@ const Testimonial: React.FC<TestimonialProps> = ({ quote, name, location }) => {
 
 const Testimonials: React.FC = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-100">
+    <section className="py-20 bg-black">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Users Say</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Who are We?</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Hear from people who have made meaningful connections through WHISPR.
           </p>
