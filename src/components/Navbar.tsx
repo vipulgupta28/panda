@@ -34,15 +34,15 @@ const Navbar: React.FC = () => {
           <div className="hidden md:flex items-center space-x-8">
            <a
   href="#features"
-  className={`hover:bg-zinc-400 p-3 rounded-[100px] transition-colors ${isScrolled ? 'text-black' : 'text-white'}`}
+  className={`hover:bg-black p-3 animation duration-400 rounded-[100px] transition-colors ${isScrolled ? 'text-black' : 'text-white'}`}
 >Features</a>
            <a
   href="#how-it-works"
-  className={`hover:bg-zinc-400 p-3 rounded-[100px] transition-colors ${isScrolled ? 'text-black' : 'text-white'}`}
+  className={`hover:bg-black p-3 rounded-[100px] animation duration-400 transition-colors ${isScrolled ? 'text-black' : 'text-white'}`}
 >How It Works</a>
              <a
-  href="#how-it-works"
-  className={`hover:bg-zinc-400 p-3 rounded-[100px] transition-colors ${isScrolled ? 'text-black' : 'text-white'}`}
+  href="#who-are-we"
+  className={`hover:bg-black p-3 rounded-[100px] animation duration-400 transition-colors ${isScrolled ? 'text-black' : 'text-white'}`}
 >About</a>
            
             <Button>Get Started</Button>
@@ -78,7 +78,7 @@ const Navbar: React.FC = () => {
                 How It Works
               </a>
               <a 
-                href="#about" 
+                href="#" 
                 className="text-gray-800 hover:text-black py-2 transition-colors"
                 onClick={() => setIsOpen(false)}
               >

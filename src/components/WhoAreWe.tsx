@@ -91,7 +91,7 @@ const WhoAreWe: React.FC = () => {
   <div className="absolute -inset-1 bg-indigo-500/10 blur-2xl opacity-30 group-hover:opacity-50 transition duration-500 rounded-2xl pointer-events-none"></div>
 
   <p className="relative z-10">
-   WHISPR is an open-source organization with a mission to build anonymous, inclusive, and empowering digital spaces. 
+   Panda is an open-source organization with a mission to build anonymous, inclusive, and empowering digital spaces. 
     <br /><br />
     We believe in the power of authentic human expression, where people can share their thoughts without fear, connect with others from around the globe, and foster real, unfiltered conversations.
     <br /><br />

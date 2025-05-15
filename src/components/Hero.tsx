@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import Button from './Button';
 
 const Hero: React.FC = () => {
   const bubblesRef = useRef<HTMLDivElement>(null);
@@ -83,17 +82,17 @@ useEffect(() => {
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button className="w-full bg-white p-4 text-black font-medium rounded-[100px] sm:w-auto">Start Chatting Now</button>
-            <Button primary={false} className="w-full sm:w-auto">Learn More</Button>
+            
           </div>
-          
+         
           <div className="mt-12 md:mt-16">
-            <p className="text-gray-500 mb-4">Trusted by thousands of users worldwide</p>
+            <p className="text-white  mb-4">Trusted by thousands of users worldwide</p>
             <div className="flex justify-center space-x-6 md:space-x-10">
               <div className="text-2xl font-bold">10K+</div>
               <div className="text-2xl font-bold">150+</div>
               <div className="text-2xl font-bold">4.8★</div>
             </div>
-            <div className="flex justify-center space-x-4 md:space-x-8 text-sm text-gray-600">
+            <div className="flex justify-center space-x-4 md:space-x-8 text-sm text-white">
               <div>Daily Users</div>
               <div>Countries</div>
               <div>Rating</div>
