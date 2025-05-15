@@ -14,10 +14,12 @@
   "type": "commonjs",
   "dependencies": {
     "@types/cors": "^2.8.18",
+    "@types/ws": "^8.18.1",
     "axios": "^1.9.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "socket.io": "^4.8.1"
+    "socket.io": "^4.8.1",
+    "ws": "^8.18.2"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
